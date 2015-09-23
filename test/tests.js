@@ -211,8 +211,8 @@ describe('Slicer', function(){
         it('should return expected js object', function(){
             var expected = {
                 'foo-name': {
-                    '#': 'sub-item 1',
-                    'type': 'simple'
+                    'foo-#': 'sub-item 1',
+                    'foo-type': 'simple'
                 }
             };
 
