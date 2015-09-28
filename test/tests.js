@@ -227,17 +227,28 @@ describe('Slicer', function(){
     describe('parses XML and mutates values', function(){
         it('should return expected js object', function(){
             var expected = {
-                'index': 0
+                'item': {
+                    'index': {
+                        '#': 0,
+                        'foo': 'av-bar'
+                    },
+                    'sub-item': {
+                        'index': {
+                            '#': 1,
+                            'bar': 'av-foo'
+                        }
+                    }
+                }
             };
 
             var options = {
                 valueMutator: function (input) {
                     var int = parseInt(input, 10);
-                    return (!isNaN(int)) ? int : input;
+                    return (!isNaN(int)) ? int : 'av-' + input;
                 }
             };
 
-            chai.expect(processXml('03.xml', '/root/item/sub-item/index', options).result).to.eql(expected);
+            chai.expect(processXml('06.xml', '/root/item', options).result).to.eql(expected);
         });
     });
 

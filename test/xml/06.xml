@@ -1,0 +1,8 @@
+<root>
+  <item>
+    <index foo="bar">0</index>
+    <sub-item>
+      <index bar="foo">1</index>
+    </sub-item>
+  </item>
+</root>

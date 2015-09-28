@@ -73,13 +73,15 @@ class Slicer {
                     if (!nodeInfo.result) {
                         nodeInfo.result = {};
                         if (!justWhitespace.test(nodeInfo.text)) {
-                            nodeInfo.result[this.options.textAttrName] = nodeInfo.text;
+                            nodeInfo.result[this.options.textAttrName] =
+                                this.options.valueMutator(nodeInfo.text);
                         }
                     }
 
                     for (var i in nodeInfo.attrs) {
                         if (nodeInfo.attrs.hasOwnProperty(i)) {
-                            nodeInfo.result[i] = nodeInfo.attrs[i];
+                            nodeInfo.result[i] =
+                                this.options.valueMutator(nodeInfo.attrs[i]);
                         }
                     }
                 }
@@ -120,11 +122,10 @@ class Slicer {
             if (t.withinPath) {
                 text = text.replace(/^ +$/, '');
                 if (text) {
-                    var mutText = this.options.valueMutator(text);
                     if (!t.nodeInfo.text) {
-                        t.nodeInfo.text = mutText;
+                        t.nodeInfo.text = text;
                     } else {
-                        t.nodeInfo.text += mutText;
+                        t.nodeInfo.text += text;
                     }
                 }
             }
@@ -211,15 +212,17 @@ class Slicer {
         } else {
             if (item.attrs) {
                 var result = {};
-                result[this.options.textAttrName] = item.text;
+                result[this.options.textAttrName] =
+                    this.options.valueMutator(item.text);
                 for (var i in item.attrs) {
                     if (item.attrs.hasOwnProperty(i)) {
-                        result[this.options.attrNameMutator(i)] = item.attrs[i];
+                        result[this.options.attrNameMutator(i)] =
+                            this.options.valueMutator(item.attrs[i]);
                     }
                 }
                 return result;
             } else {
-                return item.text;
+                return this.options.valueMutator(item.text);
             }
         }
     }
