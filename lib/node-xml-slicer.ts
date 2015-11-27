@@ -1,3 +1,4 @@
+'use strict';
 interface Options {
     textAttrName?: string;
     attrNameMutator?: (input: string) => string;
@@ -5,7 +6,9 @@ interface Options {
     valueMutator?: (input: any) => any;
 }
 
-class Slicer {
+// @target: ES6
+// @module: commonjs
+export default class Slicer {
     private location = [];
     private rootPath;
     private withinPath: boolean = false;
@@ -242,5 +245,3 @@ class Slicer {
         }
     }
 }
-
-export default Slicer;

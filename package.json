@@ -22,9 +22,18 @@
     "sax",
     "node-expat"
   ],
-  "devDependencies": {
-    "chai": "^3.0.0",
-    "mocha": "^2.2.5",
+  "dependencies": {
     "node-expat": "^2.3.8"
+  },
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-plugin-add-module-exports": "^0.1.1",
+    "babel-preset-es2015": "^6.1.18",
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.9.2",
+    "mocha": "^2.2.5"
   }
 }
