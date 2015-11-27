@@ -243,4 +243,4 @@ class Slicer {
     }
 }
 
-export = Slicer;
+export default Slicer;
